@@ -4,16 +4,21 @@ import java.util.Arrays;
 public class MaximumPairwiseProduct {
 
 public static int pairwiseProduct(int b[], int length){
-int r = 0;
-  for (int i=0; i<length; i++){
-   for( int j =i+1; j < length; j++){
-    if (b[i] * b[j] > r){
-      r = b[i] * b[j];
-    }
-   } 
+int max_index1= -1;
 
-  }
-  return r;
+for (int i =0 ;i < length; ++i){
+
+if ((max_index1 == -1) || (b[i] > b[max_index1]))
+max_index1 = i;
+}
+
+int max_index2 = -1;
+for (int j =0 ;j < length; ++j){
+
+if (b[j]!=b[max_index1] && ((max_index2 == -1) || (b[j] > b[max_index2])))
+max_index2 = j;
+}
+return b[max_index1]*b[max_index2];
 }
 
 public static void main(String[] args){
